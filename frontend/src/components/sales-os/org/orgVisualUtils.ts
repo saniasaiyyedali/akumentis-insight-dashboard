@@ -17,7 +17,7 @@ export type LandscapeNode = {
 
 export function perfColor(
   achievement: number,
-  revenueAtRisk: number,
+  _revenueAtRisk: number,
   atRisk?: boolean
 ): string {
 
