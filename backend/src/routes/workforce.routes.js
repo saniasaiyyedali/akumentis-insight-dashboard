@@ -1,0 +1,48 @@
+const express = require('express');
+const router = express.Router();
+const ctrl = require('../controllers/workforce.controller');
+const osCtrl = require('../controllers/salesOS.controller');
+const { authenticate } = require('../middleware/auth');
+
+router.get('/os/summary', authenticate, osCtrl.getSummary);
+router.get('/os/hierarchy-levels', authenticate, osCtrl.getHierarchyLevels);
+router.get('/os/segments', authenticate, osCtrl.getSegments);
+router.get('/os/breakdown', authenticate, osCtrl.getBreakdown);
+router.get('/os/profile/:type/:id', authenticate, osCtrl.getProfile);
+router.get('/os/leakage', authenticate, osCtrl.getLeakage);
+router.get('/os/org-tree', authenticate, osCtrl.getOrgTree);
+router.get('/os/compare', authenticate, osCtrl.compare);
+router.post('/os/ai', authenticate, osCtrl.aiQuery);
+router.get('/os/performance-hub', authenticate, osCtrl.getPerformanceHub);
+router.get('/os/segment-members', authenticate, osCtrl.getSegmentMembers);
+router.get('/os/top-bottom', authenticate, osCtrl.getTopBottom);
+router.get('/os/leakage-ownership', authenticate, osCtrl.getLeakageOwnership);
+router.get('/os/org-node/:empCode', authenticate, osCtrl.getOrgNodeDetail);
+router.get('/os/org-health', authenticate, osCtrl.getOrgHierarchyHealth);
+router.get('/os/org-level', authenticate, osCtrl.getOrgLevelDistribution);
+router.get('/os/org-region', authenticate, osCtrl.getOrgRegionManagers);
+router.get('/os/org-manager/:empCode', authenticate, osCtrl.getOrgManagerDetail);
+
+router.get('/kpi', authenticate, ctrl.getKPI);
+router.get('/sales-kpi', authenticate, ctrl.getSalesKPI);
+router.get('/hierarchy', authenticate, ctrl.getHierarchy);
+router.get('/data-quality', authenticate, ctrl.getDataQuality);
+router.get('/treemap', authenticate, ctrl.getTreemap);
+router.get('/verify', authenticate, ctrl.getVerify);
+router.get('/dynamic-filters', authenticate, ctrl.getDynamicFilters);
+router.get('/drilldown/:level/:value', authenticate, ctrl.getDrillDown);
+router.get('/vacancy/:dimension', authenticate, ctrl.getVacancyByDimension);
+router.get('/designations', authenticate, ctrl.getDesignations);
+router.get('/hiring/:period', authenticate, ctrl.getHiringTrend);
+router.get('/states', authenticate, ctrl.getHeadcountByState);
+router.get('/employees', authenticate, ctrl.getEmployees);
+router.get('/columns', authenticate, ctrl.getColumns);
+router.get('/column-values', authenticate, ctrl.getColumnValues);
+router.get('/bm', authenticate, ctrl.getBMData);
+router.get('/rm', authenticate, ctrl.getRMData);
+router.get('/team-trend', authenticate, ctrl.getTeamTrend);
+router.get('/sales-hierarchy', authenticate, ctrl.getSalesHierarchy);
+router.get('/executive-insights', authenticate, ctrl.getExecutiveInsights);
+router.post('/reload', authenticate, ctrl.reloadExcel);
+
+module.exports = router;
